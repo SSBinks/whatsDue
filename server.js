@@ -33,6 +33,15 @@ router.route('/assign')
     res.json({ message: "Come on ladies let us get into formation"});
   });
 });
+
+router.route('/assign/:due_date')
+.get(function(req, res) {
+  Assignment.find(req.params.due_date, function (err, assignment){
+    if(err)
+    res.send(err);
+    res.json(assignment);
+  });
+});
 app.use('/', router)
 app.listen(port);
 console.log('Got it up going high when they go low');
