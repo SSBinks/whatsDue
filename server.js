@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var Assignment = require('./models/assignment');
 var dotenv = require('dotenv').config();
-var port = process.env.PORT || 8080;
+var port = process.env.PORT || 8000;
 mongoose.connect(process.env.MONGODB_LINK);
 
 app.use(bodyParser.urlencoded({ extended: true}));
@@ -23,7 +23,7 @@ router.route('/assign')
 .post( function(req, res){
   var assign = new Assignment();
   assign.title = req.body.title;
-  assign.dueDate = moment(req.body.dueDate, "MM-DD-YYYY");
+  assign.dueDate = moment(req.body.dueDate).format('L');
   assign.progress = req.body.progress;
   assign.complete = req.body.complete;
 
@@ -36,7 +36,7 @@ router.route('/assign')
 
 router.route('/assign/:due_date')
 .get(function(req, res) {
-  Assignment.find({dueDate: req.params.due_date}, function (err, assignment){
+  Assignment.find({dueDate: moment(req.params.due_date).format('L')}, function (err, assignment){
     if(err)
     res.send(err);
     res.json(assignment);
