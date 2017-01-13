@@ -36,7 +36,7 @@ router.route('/assign')
 
 router.route('/assign/:due_date')
 .get(function(req, res) {
-  Assignment.find(req.params.due_date, function (err, assignment){
+  Assignment.find({dueDate: req.params.due_date}, function (err, assignment){
     if(err)
     res.send(err);
     res.json(assignment);
