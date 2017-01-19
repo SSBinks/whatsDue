@@ -64,24 +64,7 @@ AssignmentType.find({category: req.params.category}, function(err, type){
   res.json(type);
   });
 })
-router.route('/assign/category')
-.post( function(req, res){
-  var type = new AssignmentType();
-  console.log('>>>>This is type object ' + JSON.stringify(type))
-  type.category = req.body.category;
-  type.fieldOne.name = req.body.fname;
-  type.fieldOne.length = req.body.fnum;
-  type.fieldTwo.name = req.body.sname;
-  type.fieldTwo.length = req.body.snum;
-  type.fieldThree.name = req.body.tname;
-  type.fieldThree.length = req.body.tnum;
-  console.log('This is the body ' + JSON.stringify(req.body));
-  type.save(function(err){
-    if(err)
-    res.send('Yall dont want zero problems' + err);
-    // res.json({ message: "It worked?"});
-  });
-});
+
 app.use('/', router)
 app.listen(port);
 console.log('Got it up going high when they go low');

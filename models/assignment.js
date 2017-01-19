@@ -9,7 +9,9 @@ var AssignmentSchema = new Schema ({
   dueDate: {type: Date,  min: moment().subtract(1, 'day'), max: moment().add(2, 'years').calendar()},
   progress: {type: Number, min: 0, max: 100},
   complete: Boolean,
-  category: String
+  category: String,
+  part: String,
+  completionAmount: Number
 });
 
 module.exports = mongoose.model('Assignment', AssignmentSchema);
