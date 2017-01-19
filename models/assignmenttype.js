@@ -6,7 +6,7 @@ var Assignment = require('./assignment');
 
 var AssignmentTypeSchema = new Schema({
   _id: Number,
-  category: String,
+  categories: String,
   fieldOne: {
     name: {type: String},
     length: {type: Number}

@@ -22,10 +22,6 @@ router.use(function(req, res, next) {
 
 router.route('/assign')
 .post( function(req, res){
-  var type = AssignmentType.find({category: 'reading'}, function(err, type){
-    if(err)return handleError(err);
-    console.log(type.category);
-  });
   // res.send(err);
   var assign = new Assignment();
   // console.log('>>>>This is type object' + JSON.stringify(type))
@@ -33,16 +29,15 @@ router.route('/assign')
   assign.dueDate = moment(req.body.dueDate).format('L');
   assign.progress = req.body.progress;
   assign.complete = req.body.complete;
-  console.log('>>>>This is TYPE ' +  req.body.category)
-  assign._assign = type.id;
-
+  assign.categories = req.body.categories;
+  console.log('what is a categories: ' + req.body.categories);
+  assign.part = req.body.part;
+  assign.completionAmount = req.body.completionAmount;
   assign.save(function(err){
     if(err)
     res.send('derp this broke' + err);
     // console.log('>>>>This is type object ' + JSON.stringify(type))
   });
-type.assignment.push(assign.id);
-type.save();
 res.json({ message: "Come on ladies let us get into formation"});
 });
 
@@ -56,9 +51,9 @@ router.route('/assign/:due_date')
   });
 });
 
-router.route('/assign/category/:category')
+router.route('/assign/categories/:categories')
 .get(function(req, res) {
-AssignmentType.find({category: req.params.category}, function(err, type){
+AssignmentType.find({categories: req.params.categories}, function(err, type){
   if(err)
   res.send(err);
   res.json(type);
