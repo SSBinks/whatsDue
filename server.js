@@ -51,6 +51,29 @@ router.route('/assign/:due_date')
   });
 });
 
+router.route('/assign/update/:assign_id')
+.put(function(req, res) {
+  Assignment.findById(req.params.assign_id, function(err, assignment) {
+    if(err)
+    res.send(err);
+      console.log('the id ' + assignment);
+    let keys = Object.keys(req.body);
+    for(var i =0; i < keys.length; i++){
+
+      let key = keys[i];
+      console.log('the key is ' + key);
+      console.log('the second ' + req.body[key]);
+
+      assignment[key] = req.body[key];
+    }
+    assignment.save(function(err) {
+      if(err)
+      res.send(err);
+      res.json(assignment);
+    })
+  });
+});
+
 router.route('/assign/categories/:categories')
 .get(function(req, res) {
 AssignmentType.find({categories: req.params.categories}, function(err, type){
