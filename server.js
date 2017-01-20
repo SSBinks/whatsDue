@@ -8,7 +8,7 @@ var mongoose = require('mongoose');
 var Assignment = require('./models/assignment');
 var AssignmentType = require('./models/assignmenttype');
 var dotenv = require('dotenv').config();
-var port = process.env.PORT || 8000;
+var port = process.env.PORT || 8080;
 mongoose.connect(process.env.MONGODB_LINK);
 
 app.use(bodyParser.urlencoded({ extended: true}));
