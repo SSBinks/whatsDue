@@ -26,6 +26,8 @@ router.route('/assign')
   var assign = new Assignment();
   // console.log('>>>>This is type object' + JSON.stringify(type))
   assign.title = req.body.title;
+  console.log( 'this is Body' + JSON.stringify(req.body));
+  console.log( 'this is Title' + req.body.title);
   assign.dueDate = moment(req.body.dueDate).format('L');
   console.log( 'this is DATE' + req.body.dueDate);
   assign.progress = req.body.progress;
