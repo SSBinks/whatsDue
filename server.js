@@ -27,13 +27,14 @@ router.route('/assign')
   // console.log('>>>>This is type object' + JSON.stringify(type))
   assign.title = req.body.title;
   assign.dueDate = moment(req.body.dueDate).format('L');
-  assign.progress = parseInt(req.body.progress);
+  console.log( 'this is DATE' + req.body.dueDate);
+  assign.progress = req.body.progress;
   assign.complete = req.body.complete;
   assign.categories = req.body.categories;
   assign.part = req.body.part;
   console.log( 'this is complete' + req.body.completionAmount);
   assign.completionAmount = req.body.completionAmount;
-  console.log( 'this is complete' + req.body.goal);
+  console.log( 'this is goal' + req.body.goal);
   assign.goal = req.body.goal;
   assign.dailyGoal = req.body.dailyGoal;
   assign.save(function(err){
