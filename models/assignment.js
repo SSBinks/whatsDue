@@ -4,7 +4,7 @@ var Schema = mongoose.Schema;
 var AssignmentType = require('./assignmenttype');
 var AssignmentSchema = new Schema ({
   title: String,
-  dueDate: {type: Date,  min: moment().add(-1, 'days'), max: moment().add(2, 'years').calendar()},
+  dueDate: {type: Date, max: moment().add(2, 'years').calendar()},
   progress: {type: Number, min: 0, max: 100},
   complete: Boolean,
   categories: String,
