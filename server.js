@@ -20,6 +20,17 @@ router.use(function(req, res, next) {
   next();
 });
 
+//This works
+router.route('/')
+.get(function(req, res) {
+  Assignment.find({}).sort({dueDate: 'ascending'}).exec(function (err, assignment){
+    if(err)
+    res.send(err);
+    res.json(assignment);
+  });
+});
+
+
 router.route('/assign')
 .post( function(req, res){
   // res.send(err);
