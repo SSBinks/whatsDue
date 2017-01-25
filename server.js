@@ -69,6 +69,15 @@ router.route('/assign/:due_date')
   });
 });
 
+router.route('/assign/category/:categories')
+.get(function(req, res) {
+  Assignment.find({categories: req.params.categories}, function (err, assignment){
+    if(err)
+    res.send(err);
+    res.json(assignment);
+  });
+});
+
 router.route('/assign/update/:assign_id')
 .put(function(req, res) {
   Assignment.findById(req.params.assign_id, function(err, assignment) {
