@@ -8,7 +8,7 @@ var mongoose = require('mongoose');
 var Assignment = require('./models/assignment');
 var AssignmentType = require('./models/assignmenttype');
 var dotenv = require('dotenv').config();
-var port = process.env.PORT || 8000;
+var port = process.env.PORT || 8081;
 mongoose.connect(process.env.MONGODB_LINK);
 
 app.use(bodyParser.urlencoded({ extended: true}));
@@ -23,7 +23,7 @@ router.use(function(req, res, next) {
 //This works
 router.route('/')
 .get(function(req, res) {
-  const today = moment().format();
+  const today = moment().subtract(1, 'days').format();
   console.log('Today is ' + today);
   Assignment.find({dueDate: {$gt: today}}).sort({dueDate: 'ascending'}).exec(function (err, assignment){
     if(err)
