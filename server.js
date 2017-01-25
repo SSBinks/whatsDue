@@ -8,7 +8,7 @@ var mongoose = require('mongoose');
 var Assignment = require('./models/assignment');
 var AssignmentType = require('./models/assignmenttype');
 var dotenv = require('dotenv').config();
-var port = process.env.PORT || 8081;
+var port = process.env.PORT || 8000;
 mongoose.connect(process.env.MONGODB_LINK);
 
 app.use(bodyParser.urlencoded({ extended: true}));
@@ -23,7 +23,9 @@ router.use(function(req, res, next) {
 //This works
 router.route('/')
 .get(function(req, res) {
-  Assignment.find({}).sort({dueDate: 'ascending'}).exec(function (err, assignment){
+  const today = moment().format();
+  console.log('Today is ' + today);
+  Assignment.find({dueDate: {$gt: today}}).sort({dueDate: 'ascending'}).exec(function (err, assignment){
     if(err)
     res.send(err);
     res.json(assignment);
