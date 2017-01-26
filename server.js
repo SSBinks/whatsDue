@@ -23,7 +23,7 @@ router.use(function(req, res, next) {
 //This works
 router.route('/')
 .get(function(req, res) {
-  const today = moment().subtract(1, 'days').format();
+  const today = moment().utc().subtract(1, 'days').format();
   console.log('Today is ' + today);
   Assignment.find({dueDate: {$gt: today}}).sort({dueDate: 'ascending'}).exec(function (err, assignment){
     if(err)
