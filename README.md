@@ -1,4 +1,22 @@
-#Capstone Product Plan
+# Capstone
+
+## About
+What's Due is an API built with Nodejs, Express and MongoDb and was deployed using AWS. It is the endpoint for the React Native app [Due: Early](https://github.com/SSBinks/dueEarly). This app is targeted toward young adults studying at the tertiary level and beyond to help them track progress on specific tasks and automatically sets daily or weekly goals for the user.
+
+## Demo of Due: Early
+![Demo](https://cloud.githubusercontent.com/assets/16868372/25776406/2b0dc0f6-3272-11e7-96b6-05a449aaf2a7.gif)
+
+
+### Personal Learning Goals
++ Learn how to use React Native
++ Build my own APIs
++ Make a clean and responsive site
+
+### Presentation Slides
+These [Slides](https://docs.google.com/presentation/d/1KwwLi9ZMp-fln-fl3AQYyU4ZqrVxJPGcHApkMvBtaFE/edit#slide=id.p) accompanied my final presentation of my application in late January of 2017.
+
+# Project Proposal
+Below is my original project proposal
 
 ###Working Names
 + Noble J
@@ -9,10 +27,6 @@
 ##Problem Statement
 There are a wide variety of mobile apps that help people organize, track and complete tasks and a few that specifically target students with homework, exams and other school specific tasks. However, most of these applications are created for students attending secondary institutions and can be quite rigid in terms of tracking class schedules, types of subjects one may take and how frequently assignments may be assigned. The aim of my mobile application is to assist students who are attending post-secondary or tertiary institutions keep track of progress on their assignments and progress throughout the duration of their study of project. The application will avoid being as rigid as some homework applications and yet will be more focused than general apps that track tasks.
 
-###Learning Goals
-+ Learn how to use React Native
-+ Become comfortable using other site's APIs
-+ Make a clean and responsive site
 
 ##Market Research
 ###Alternative Mobile Apps
@@ -43,9 +57,8 @@ My user attends a post-secondary institution. The reason for this is that there 
 ##Proposed Technologies
 **Backend**
 + MongoDB
-+ Node.js
++ Nodejs
 + Express
-+ MongoDB
 + GoodReads API TBD
 + Google Calendar API TBD
 
